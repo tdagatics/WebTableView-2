@@ -17,6 +17,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.finishedGooglePlacesArray = [[NSArray alloc] init];
     [self makeRestuarantRequests];
     
     // Uncomment the following line to preserve selection between presentations.
@@ -35,17 +36,30 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     // Return the number of sections.
-    return 0;
+    return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     // Return the number of rows in the section.
-    return 0;
+    return [self.googlePlacesArrayFromAFNetworking count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     static NSString *CellIdentifier = @"Cell";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
+
+    NSDictionary *tempDictionary = [self.googlePlacesArrayFromAFNetworking objectAtIndex:indexPath.row];
+    
+    cell.textLabel.text = [tempDictionary objectForKey:@"name"];
+    
+    if ([tempDictionary objectForKey:@"rating"] != NULL)
+    {
+        cell.detailTextLabel.text = [NSString stringWithFormat:@"Rating: %@ of 5", [tempDictionary objectForKey:@"rating"]];
+    }
+    else
+    {
+        cell.detailTextLabel.text = [NSString stringWithFormat:@"Not rated"];
+    }
     
     // Configure the cell...
     
@@ -101,12 +115,15 @@
 
 -(void)makeRestuarantRequests
 {
-    NSURL *url = [[NSURL alloc] initWithString:@"https://maps.googleapis.com/maps/api/place/textsearch/json?query=restaurants+in+New+York+City&sensor=false&key=AIzaSyAK-11MCB6KfW6RRb_qXo_DKpaAyF1ybD4"];
+
+    
+    NSURL *url = [NSURL URLWithString:@"https://maps.googleapis.com/maps/api/place/textsearch/json?query=lobster+rolls+in+New+York+City&sensor=false&key=AIzaSyAK-11MCB6KfW6RRb_qXo_DKpaAyF1ybD4"];
     
     NSURLRequest *request = [[NSURLRequest alloc] initWithURL:url];
     AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:request];
     [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
         NSLog(@"success: %@", operation.responseString);
+        self.googlePlacesArrayFromAFNetworking = [responseObject objectForKey:@"results"];
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         NSLog(@"Request failed: %@, %@", error, error.userInfo);
     }];
