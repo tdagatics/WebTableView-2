@@ -14,6 +14,7 @@
 		43EE97591A03ED0400EE1498 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 43EE97581A03ED0400EE1498 /* Images.xcassets */; };
 		43EE975C1A03ED0400EE1498 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 43EE975A1A03ED0400EE1498 /* LaunchScreen.xib */; };
 		43EE97681A03ED0400EE1498 /* WebTableView_2Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = 43EE97671A03ED0400EE1498 /* WebTableView_2Tests.m */; };
+		43EE97731A03ED8A00EE1498 /* TableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 43EE97721A03ED8A00EE1498 /* TableViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,6 +41,8 @@
 		43EE97611A03ED0400EE1498 /* WebTableView-2Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "WebTableView-2Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		43EE97661A03ED0400EE1498 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		43EE97671A03ED0400EE1498 /* WebTableView_2Tests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WebTableView_2Tests.m; sourceTree = "<group>"; };
+		43EE97711A03ED8A00EE1498 /* TableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TableViewController.h; sourceTree = "<group>"; };
+		43EE97721A03ED8A00EE1498 /* TableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TableViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -86,6 +89,8 @@
 				43EE97521A03ED0400EE1498 /* ViewController.h */,
 				43EE97531A03ED0400EE1498 /* ViewController.m */,
 				43EE97551A03ED0400EE1498 /* Main.storyboard */,
+				43EE97711A03ED8A00EE1498 /* TableViewController.h */,
+				43EE97721A03ED8A00EE1498 /* TableViewController.m */,
 				43EE97581A03ED0400EE1498 /* Images.xcassets */,
 				43EE975A1A03ED0400EE1498 /* LaunchScreen.xib */,
 				43EE974B1A03ED0400EE1498 /* Supporting Files */,
@@ -222,6 +227,7 @@
 				43EE97541A03ED0400EE1498 /* ViewController.m in Sources */,
 				43EE97511A03ED0400EE1498 /* AppDelegate.m in Sources */,
 				43EE974E1A03ED0400EE1498 /* main.m in Sources */,
+				43EE97731A03ED8A00EE1498 /* TableViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
