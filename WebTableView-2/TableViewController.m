@@ -62,7 +62,7 @@
     }
     
     // Configure the cell...
-    
+  
     return cell;
 }
 
@@ -123,7 +123,8 @@
     AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:request];
     [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
         NSLog(@"success: %@", operation.responseString);
-        self.googlePlacesArrayFromAFNetworking = [responseObject objectForKey:@"results"];
+        self.googlePlacesArrayFromAFNetworking =
+        [responseObject objectForKey:@"results"];
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         NSLog(@"Request failed: %@, %@", error, error.userInfo);
     }];
