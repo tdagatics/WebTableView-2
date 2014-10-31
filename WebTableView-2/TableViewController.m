@@ -7,6 +7,7 @@
 //
 
 #import "TableViewController.h"
+#import "AFNetworking.h"
 
 @interface TableViewController ()
 
@@ -50,6 +51,30 @@
     return cell;
 }
 
+-(void)makeRestuarantRequests
+{
+    NSURL *url = [NSURL URLWithString:@"A URL which returns JSON"];
+    
+    NSURLRequest *request = [NSURLRequest requestWi
+                             thURL:url];
+    //AFNetworking asynchronous url request
+    /*JSON ISSUES
+    AFJSONRequestOperation *operation = [AFJSONRequestOperation
+                                         JSONRequestOperationWithRequest:request
+                                         success:^(NSURLRequest *request, NSHTTPURLResponse *response, id responseObject)
+                                         {
+                                             NSLog(@"JSON RESULT %@", responseObject);
+                                             
+                                         }
+                                         failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, id responseObject)
+                                         {
+                                             NSLog(@"Request Failed: %@, %@", error, error.userInfo);
+                                         }];
+    
+    [operation start];
+     */
+    
+}
 /*
 // Override to support conditional editing of the table view.
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -93,5 +118,8 @@
     // Pass the selected object to the new view controller.
 }
 */
+
+
+
 
 @end
