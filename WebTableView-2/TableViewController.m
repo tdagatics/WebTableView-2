@@ -17,6 +17,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self makeRestuarantRequests];
     
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
@@ -51,30 +52,7 @@
     return cell;
 }
 
--(void)makeRestuarantRequests
-{
-    NSURL *url = [NSURL URLWithString:@"A URL which returns JSON"];
-    
-    NSURLRequest *request = [NSURLRequest requestWi
-                             thURL:url];
-    //AFNetworking asynchronous url request
-    /*JSON ISSUES
-    AFJSONRequestOperation *operation = [AFJSONRequestOperation
-                                         JSONRequestOperationWithRequest:request
-                                         success:^(NSURLRequest *request, NSHTTPURLResponse *response, id responseObject)
-                                         {
-                                             NSLog(@"JSON RESULT %@", responseObject);
-                                             
-                                         }
-                                         failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, id responseObject)
-                                         {
-                                             NSLog(@"Request Failed: %@, %@", error, error.userInfo);
-                                         }];
-    
-    [operation start];
-     */
-    
-}
+
 /*
 // Override to support conditional editing of the table view.
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -119,7 +97,21 @@
 }
 */
 
+#pragma mark - JSON Code
 
-
+-(void)makeRestuarantRequests
+{
+    NSURL *url = [[NSURL alloc] initWithString:@"https://maps.googleapis.com/maps/api/place/textsearch/json?query=restaurants+in+New+York+City&sensor=false&key=AIzaSyAK-11MCB6KfW6RRb_qXo_DKpaAyF1ybD4"];
+    
+    NSURLRequest *request = [[NSURLRequest alloc] initWithURL:url];
+    AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:request];
+    [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
+        NSLog(@"success: %@", operation.responseString);
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@"Request failed: %@, %@", error, error.userInfo);
+    }];
+    
+    [operation start];
+}
 
 @end
